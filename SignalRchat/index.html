@@ -24,7 +24,7 @@
         </form>
     </div>
     <div class="container-fluid">
-        <ul id="discussion"></ul>
+        <ul id="discussion" class="list-group"></ul>
     </div>
     <!--Script references. -->
     <!--Reference the jQuery library. -->
@@ -47,7 +47,7 @@
                 var encodedName = $('<div />').text(name).html();
                 var encodedMsg = $('<div />').text(message).html();
                 // Add the message to the page.
-                $('#discussion').append('<li><strong>' + encodedName
+                $('#discussion').append('<li class="list-group-item"><strong>' + encodedName
                     + '</strong>:&nbsp;&nbsp;' + encodedMsg + '</li>');
             };
             // Get the user name and store it to prepend to messages.
