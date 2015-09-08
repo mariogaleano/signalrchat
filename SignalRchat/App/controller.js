@@ -70,6 +70,7 @@
             console.log(mensaje);
             hub.send(vm.Nombre, vm.message);
             //vm.Mensajes.push(mensaje);
+            vm.message = null;
         };
     }
 })();
