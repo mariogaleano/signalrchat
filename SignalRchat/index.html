@@ -17,7 +17,7 @@
 
     <form class="form-inline" ng-show="vm.NombreListo" name="formMensaje" novalidate>
         <div class="form-group">
-            <input type="text" ng-model="vm.message" placeholder="Mensaje" required/>
+            <input type="text" ng-model="vm.message" class="form-control" placeholder="Mensaje" required/>
             <input type="button" class="btn btn-primary" value="Enviar" ng-click="vm.Enviar()" ng-disabled="!formMensaje.$valid"/>
         </div>
     </form>
