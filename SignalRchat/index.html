@@ -6,16 +6,20 @@
     <link href="Content/bootstrap.min.css" rel="stylesheet" />
 </head>
 <body class="container-fluid" ng-controller="controller as vm">
+    <ng-form class="form-inline" ng-show="!vm.NombreListo" name="formNombre">
+        <div class="form-group">
+            <label for="exampleInputEmail1">Nombre</label>
+            <input type="text" ng-model="vm.Nombre" class="form-control" placeholder="Nombre" required/>
+            <input type="button" class="btn btn-primary" value="Aceptar" ng-click="vm.SetNombre()" ng-disabled="!formNombre.$valid"/>
+        </div>
 
-    <div ng-show="!vm.NombreListo">
-        Nombre: <input type="text" ng-model="vm.Nombre" />
-        <input type="button" class="btn btn-primary" value="Aceptar" ng-click="vm.SetNombre()" />
-    </div>
+    </ng-form>
 
-
-    <form class="form-inline" ng-show="vm.NombreListo">
-        <input type="text" ng-model="vm.message" />
-        <input type="button" class="btn btn-primary" value="Enviar" ng-click="vm.Enviar()" />
+    <form class="form-inline" ng-show="vm.NombreListo" name="formMensaje">
+        <div class="form-group">
+            <input type="text" ng-model="vm.message" placeholder="Mensaje" required/>
+            <input type="button" class="btn btn-primary" value="Enviar" ng-click="vm.Enviar()" ng-disabled="!formMensaje.$valid"/>
+        </div>
     </form>
 
     <ul class="list-group" ng-repeat="mensaje in vm.Mensajes">
