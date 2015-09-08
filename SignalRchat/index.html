@@ -15,9 +15,13 @@
 </head>
 <body>
     <div class="container-fluid">
-        <input type="text" id="message" />
-        <input type="button" id="sendmessage" value="Enviar" class="btn btn-primary" />
-        <input type="hidden" id="displayname" />       
+        <form>
+            <div class="form-group">
+                <input type="text" id="message" class="form-control" />
+                <input type="button" id="sendmessage" value="Enviar" class="btn btn-primary" />
+                <input type="hidden" id="displayname" />
+            </div>
+        </form>
     </div>
     <div class="container-fluid">
         <ul id="discussion"></ul>
@@ -26,6 +30,7 @@
     <!--Reference the jQuery library. -->
     <script src="Scripts/jquery-1.9.1.min.js"></script>
     <script src="Scripts/bootstrap.min.js"></script>
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
     <link href="Content/bootstrap-theme.min.css" rel="stylesheet" />
     <!--Reference the SignalR library. -->
     <script src="Scripts/jquery.signalR-2.2.0.min.js"></script>
