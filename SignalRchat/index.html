@@ -7,8 +7,9 @@
 </head>
 <body class="container-fluid" ng-controller="controller as vm">
 
-    
+
     <div>
+        {{vm.Estado}}
         <div class="alert alert-danger" ng-show="vm.Estado == 'desconectado'">
             desconectado
         </div>
@@ -20,26 +21,23 @@
         <div class="alert alert-warning" ng-show="vm.Estado == 'conectando'">
             conectando..........
         </div>
-
-     
-
-
-      
     </div>
+
+    <input type="button" value="Reconectar" class="btn btn-danger"  ng-click="vm.Reconectar()"/>
 
     <ng-form class="form-inline" ng-show="!vm.NombreListo" name="formNombre">
         <div class="form-group">
             <label for="exampleInputEmail1">Nombre</label>
-            <input type="text" ng-model="vm.Nombre" class="form-control" placeholder="Nombre" required/>
-            <input type="button" class="btn btn-primary" value="Aceptar" ng-click="vm.SetNombre()" ng-disabled="!formNombre.$valid"/>
+            <input type="text" ng-model="vm.Nombre" class="form-control" placeholder="Nombre" required />
+            <input type="button" class="btn btn-primary" value="Aceptar" ng-click="vm.SetNombre()" ng-disabled="!formNombre.$valid" />
         </div>
 
     </ng-form>
 
     <form class="form-inline" ng-show="vm.NombreListo" name="formMensaje" novalidate>
         <div class="form-group">
-            <input type="text" ng-model="vm.message" class="form-control" placeholder="Mensaje" required/>
-            <input type="button" class="btn btn-primary" value="Enviar" ng-click="vm.Enviar()" ng-disabled="!formMensaje.$valid"/>
+            <input type="text" ng-model="vm.message" class="form-control" placeholder="Mensaje" required />
+            <input type="button" class="btn btn-primary" value="Enviar" ng-click="vm.Enviar()" ng-disabled="!formMensaje.$valid" />
         </div>
     </form>
 

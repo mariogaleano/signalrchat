@@ -76,6 +76,12 @@
             }
         });
 
+        vm.Reconectar = function () {
+
+            $.signalR.chatHub.connection.start();
+        };
+
+
         vm.Enviar = function () {
             var mensaje = { Nombre: vm.Nombre, Mensaje: vm.message };
             console.log(mensaje);
