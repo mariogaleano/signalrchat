@@ -10,6 +10,9 @@
     function controller($location,Hub,$rootScope) {
         /* jshint validthis:true */
         var vm = this;
+
+        vm.Estado = 'desconectado';
+
         vm.title = 'controller';
         //vm.Nombre = 'Mario';
         vm.Mensajes = [];
@@ -50,16 +53,24 @@
             stateChanged: function (state) {
                 switch (state.newState) {
                     case $.signalR.connectionState.connecting:
-                        //your code here
+                        vm.Estado = 'conectando';                        
+                        console.log(vm.Estado);
+                        $rootScope.$apply();
                         break;
                     case $.signalR.connectionState.connected:
-                        //your code here
+                        vm.Estado = 'conectado';
+                        console.log(vm.Estado);
+                        $rootScope.$apply();
                         break;
                     case $.signalR.connectionState.reconnecting:
-                        //your code here
+                        vm.Estado = 'reconectando';
+                        console.log(vm.Estado);
+                        $rootScope.$apply();
                         break;
                     case $.signalR.connectionState.disconnected:
-                        //your code here
+                        vm.Estado = 'desconectado';
+                        console.log(vm.Estado);
+                        $rootScope.$apply();
                         break;
                 }
             }

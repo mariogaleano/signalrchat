@@ -6,6 +6,27 @@
     <link href="Content/bootstrap.min.css" rel="stylesheet" />
 </head>
 <body class="container-fluid" ng-controller="controller as vm">
+
+    
+    <div>
+        <div class="alert alert-danger" ng-show="vm.Estado == 'desconectado'">
+            desconectado
+        </div>
+
+        <div class="alert alert-info" ng-show="vm.Estado == 'conectado'">
+            conectado
+        </div>
+
+        <div class="alert alert-warning" ng-show="vm.Estado == 'conectando'">
+            conectando..........
+        </div>
+
+     
+
+
+      
+    </div>
+
     <ng-form class="form-inline" ng-show="!vm.NombreListo" name="formNombre">
         <div class="form-group">
             <label for="exampleInputEmail1">Nombre</label>
