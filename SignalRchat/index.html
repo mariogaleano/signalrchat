@@ -9,7 +9,7 @@
 
 
     <div>
-        {{vm.Estado}}
+       
         <div class="alert alert-danger" ng-show="vm.Estado == 'desconectado'">
             desconectado
         </div>
@@ -23,9 +23,9 @@
         </div>
     </div>
 
-    <input type="button" value="Reconectar" class="btn btn-danger"  ng-click="vm.Reconectar()"/>
+    <input type="button" value="Reconectar" class="btn btn-danger"  ng-click="vm.Reconectar()" ng-show="vm.Estado == 'desconectado'"/>
 
-    <ng-form class="form-inline" ng-show="!vm.NombreListo" name="formNombre">
+    <ng-form class="form-inline" ng-show="!vm.NombreListo" name="formNombre" ng-disabled="vm.Estado == 'desconectado'">
         <div class="form-group">
             <label for="exampleInputEmail1">Nombre</label>
             <input type="text" ng-model="vm.Nombre" class="form-control" placeholder="Nombre" required />
