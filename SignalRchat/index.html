@@ -7,43 +7,83 @@
 </head>
 <body class="container-fluid" ng-controller="controller as vm">
 
+    <div class="row">
+        <div class="col-md-12">
+            <div>
 
-    <div>
-       
-        <div class="alert alert-danger" ng-show="vm.Estado == 'desconectado'">
-            desconectado
-        </div>
+                <div class="alert alert-danger" ng-show="vm.Estado == 'desconectado'">
+                    desconectado
+                </div>
 
-        <div class="alert alert-info" ng-show="vm.Estado == 'conectado'">
-            conectado
-        </div>
+                <div class="alert alert-info" ng-show="vm.Estado == 'conectado'">
+                    conectado
+                </div>
 
-        <div class="alert alert-warning" ng-show="vm.Estado == 'conectando'">
-            conectando..........
+                <div class="alert alert-warning" ng-show="vm.Estado == 'conectando'">
+                    conectando..........
+                </div>
+            </div>
         </div>
     </div>
 
-    <input type="button" value="Reconectar" class="btn btn-danger"  ng-click="vm.Reconectar()" ng-show="vm.Estado == 'desconectado'"/>
 
-    <ng-form class="form-inline" ng-show="!vm.NombreListo" name="formNombre" ng-disabled="vm.Estado == 'desconectado'">
-        <div class="form-group">
-            <label for="exampleInputEmail1">Nombre</label>
-            <input type="text" ng-model="vm.Nombre" class="form-control" placeholder="Nombre" required />
-            <input type="button" class="btn btn-primary" value="Aceptar" ng-click="vm.SetNombre()" ng-disabled="!formNombre.$valid" />
+    <div class="row" ng-show="vm.Estado == 'conectado'">
+        <div class="col-md-12">
+            <ng-form class="form-inline" ng-show="!vm.NombreListo" name="formNombre" ng-disabled="vm.Estado == 'desconectado'">
+                <div class="form-group">
+                    <label>Nombre</label>
+                    <input type="text" ng-model="vm.Nombre" class="form-control" placeholder="Nombre" required />
+                    <input type="button" class="btn btn-primary" value="Aceptar" ng-click="vm.SetNombre()" ng-disabled="!formNombre.$valid" />
+                </div>
+            </ng-form>
+        </div>
+    </div>
+
+    <div class="row" ng-show="vm.NombreListo">
+        <div class="col-md-10">
+
+            <form class="form-inline" ng-show="vm.grupoSeleccionado && vm.NombreListo" name="formMensaje" novalidate >
+                <div class="form-group">
+                    <input type="text" ng-model="vm.message" class="form-control" placeholder="Mensaje" required />
+                    <input type="button" class="btn btn-primary" value="Enviar" ng-click="vm.Enviar()" ng-disabled="!formMensaje.$valid" />
+                    <span ng-bind="vm.grupoSeleccionado"></span>
+                </div>
+            </form>
+            <ul class="list-group" ng-repeat="mensaje in vm.Mensajes | filter:{groupName:vm.grupoSeleccionado[0]}">
+                <li class="list-group-item"><b>{{::mensaje.Nombre}}:</b> {{::mensaje.Mensaje}}</li>
+            </ul>
         </div>
 
-    </ng-form>
 
-    <form class="form-inline" ng-show="vm.NombreListo" name="formMensaje" novalidate>
-        <div class="form-group">
-            <input type="text" ng-model="vm.message" class="form-control" placeholder="Mensaje" required />
-            <input type="button" class="btn btn-primary" value="Enviar" ng-click="vm.Enviar()" ng-disabled="!formMensaje.$valid" />
+        <div class="col-md-2">
+            <div>
+                <input type="text" ng-model="vm.grupoNuevo" />
+                <input type="button" value="Crear grupo" ng-click="vm.CrearGrupo()" />
+            </div>
+            <div>
+                <select ng-options="grpo for grpo in vm.listaGrupos" ng-model="vm.grupoSeleccionado" multiple></select>
+                
+            </div>
         </div>
-    </form>
+    </div>
 
-    <ul class="list-group" ng-repeat="mensaje in vm.Mensajes">
-        <li class="list-group-item"><b>{{::mensaje.Nombre}}:</b> {{::mensaje.Mensaje}}</li>
-    </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <input type="button" value="Reconectar" class="btn btn-danger" ng-click="vm.Reconectar()" ng-show="vm.Estado == 'desconectado'" />
 
     <script src="Scripts/jquery-1.9.1.min.js"></script>
     <script src="Scripts/angular.min.js"></script>
