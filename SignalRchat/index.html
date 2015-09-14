@@ -60,7 +60,7 @@
                 <input type="text" ng-model="vm.grupoNuevo" />
                 <input type="button" value="Crear grupo" ng-click="vm.CrearGrupo()" />
             </div>
-            <div ng-show="vm.listaGrupos">
+            <div ng-show="vm.listaGrupos.length > 0">
                 <select ng-options="grpo for grpo in vm.listaGrupos" ng-model="vm.grupoSeleccionado" multiple></select>
                 
             </div>
